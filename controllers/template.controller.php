@@ -1,6 +1,6 @@
 <?php
 
-class ControllerTemplate 
+class ControllerTemplate
 {
     public function ctrTemplate()
     {

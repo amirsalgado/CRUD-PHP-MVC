@@ -39,8 +39,9 @@
                                 </thead>
 
                                 <tbody>                                    
-                                    <?php      
-                                        foreach($products as $key => $value){
+                                    <?php
+                                    $products = ControllerProducts::Product_List();
+                                    foreach($products as $key => $value){
                                     ?>
 
                                     <tr>
@@ -83,54 +84,66 @@
                 <h4 class="alert alert-dismissible">Agregar Producto</h4>
             </div>
             <div class="modal-body">
-                <form method="post" enctype="multipart/form-data">
+                <form action="../../controllers/products.controller.php" method="post" enctype="text/plain">
 
-                    <div class="form-group has-feedback" bis_skin_checked="1" required>
-                        <input type="text" name="product_name" class="form-control" placeholder="Nombre del producto">
+                    <div class="form-group has-feedback">
+                        <!--suppress HtmlFormInputWithoutLabel -->
+                        <input type="text" name="product_name" class="form-control" placeholder="Nombre del producto" required>
                     </div>
 
-                    <div class="form-group has-feedback" bis_skin_checked="1" required>
-                        <input type="text" name="product_ref" class="form-control" placeholder="Referencia">
+                    <div class="form-group has-feedback">
+                        <!--suppress HtmlFormInputWithoutLabel -->
+                        <input type="text" name="product_ref" class="form-control" placeholder="Referencia" required>
                     </div>
 
-                    <div class="form-group has-feedback" bis_skin_checked="1" required>
-                        <input type="text" name="product_price" class="form-control" placeholder="Precio">
+                    <div class="form-group has-feedback">
+                        <!--suppress HtmlFormInputWithoutLabel -->
+                        <input type="text" name="product_price" class="form-control" placeholder="Precio" required>
                     </div>
 
-                    <div class="form-group has-feedback" bis_skin_checked="1" required>
-                        <input type="text" name="product_weight" class="form-control" placeholder="Peso">
+                    <div class="form-group has-feedback">
+                        <!--suppress HtmlFormInputWithoutLabel -->
+                        <input type="text" name="product_weight" class="form-control" placeholder="Peso" required>
                     </div>
 
-                    <div class="form-group has-feedback" bis_skin_checked="1">
+                    <div class="form-group has-feedback">
                         <label for="product_cat">Categoría</label>
-                        <select name="category" class="form-control" required>
-                            <?php
-                            $category = array('1' => 'Producto', '2' => 'Servicio');
-
-                            foreach ($category as $key => $value) {
-                            ?>
-                                <option value=" <?php echo "$value"; ?> "><?php echo "$key - $value" ?></option>
-                            <?php
-                            }
-                            ?>
+                        <!--suppress HtmlFormInputWithoutLabel -->
+                        <select name="categorie" class="form-control" required>
+                            <option value="Productos">1-Productos</option>
+                            <option value="Servicios">2-Servicios</option>
                         </select>
                     </div>
 
-                    <div class="form-group has-feedback" bis_skin_checked="1" required>
-                        <input type="text" name="product_stock" class="form-control" placeholder="Cantidad">
+                    <div class="form-group has-feedback">
+                        <!--suppress HtmlFormInputWithoutLabel -->
+                        <input type="text" name="product_stock" class="form-control" placeholder="Cantidad" required>
                     </div>
 
-                    <div class="form-group has-feedback" bis_skin_checked="1" required>
-                        <input type="date" name="create_date" class="form-control">
+                    <div class="form-group has-feedback">
+                        <!--suppress HtmlFormInputWithoutLabel -->
+                        <input type="date" name="create_date" class="form-control" required>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger pull-left">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary" formaction="">Guardar</button>
                     </div>
+
+
                 </form>
+
+                <?php
+                $data = array();
+                if ($_POST){
+                    foreach($_POST as $nombre_campo => $valor){
+                        $data[$nombre_campo] = $valor;
+                    }
+                    ControllerProducts::ctrSaveProducts($data);
+                }
+
+                ?>
             </div>
         </div>
     </div>
-
 </div>

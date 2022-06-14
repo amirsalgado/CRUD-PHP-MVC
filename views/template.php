@@ -1,7 +1,3 @@
-<?php
-    $products = ControllerProducts::Product_List();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -53,8 +49,6 @@
           $_GET["page"] == "sales") {              
             include "pages/".$_GET["page"].".php";          
       }
-    }else {
-      include "index.php";
     }
   ?>  
   <!-- /.content-wrapper -->
