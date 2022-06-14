@@ -38,8 +38,33 @@
                                     </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody>                                    
+                                    <?php      
+                                        foreach($products as $key => $value){
+                                    ?>
 
+                                    <tr>
+                                        <td><?php echo $key+1; ?></td>
+                                        <td><?php echo $value["product_name"];?></td>
+                                        <td><?php echo $value["reference"];?></td>
+                                        <td><?php echo $value["price"];?></td>
+                                        <td><?php echo $value["weight"];?></td>
+                                        <td><?php echo $value["id_categories"];?></td>
+                                        <td><?php echo $value["stock"];?></td>
+                                        <td><?php echo $value["create_date"];?></td>                                        
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-warning btn-sm">
+                                                    <span class="oi oi-pencil fi-pencil">Editar</span>
+                                                </button>
+
+                                                <button class="btn btn-danger btn-sm">
+                                                    <i class="fas fapencil-alt text-white">Eliminar</i>
+                                                </button>                                                
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php }?>
                                 </tbody>
                             </table>
                         </div>
@@ -107,6 +132,5 @@
             </div>
         </div>
     </div>
-
 
 </div>
