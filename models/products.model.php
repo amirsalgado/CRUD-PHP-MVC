@@ -15,9 +15,9 @@ class ModelProducts
     }
 
 
-    public static function mdlSaveProducts($table, $data)
+    public static function mdlCreateProducts($table, $data)
     {
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $table(product_name, product_ref, product_price, product_weight, product_stock, categorie, create_date) VALUES (:PRODUCTO, :REFERENCIA, :PRECIO, :PESO, :STOCK, :CATEGORIA, :FECHA)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $table(NULL, product_name, product_ref, product_price, product_weight, product_stock, categorie, create_date) VALUES (:ID, :PRODUCTO, :REFERENCIA, :PRECIO, :PESO, :STOCK, :CATEGORIA, :FECHA)");
 
         $stmt->bindParam(":PRODUCTO", $data["product_name"], PDO::PARAM_STR);
         $stmt->bindParam(":REFERENCIA", $data["product_ref"], PDO::PARAM_STR);

@@ -139,7 +139,7 @@
                     foreach($_POST as $nombre_campo => $valor){
                         $data[$nombre_campo] = $valor;
                     }
-                    ControllerProducts::ctrSaveProducts($data);
+                    ControllerProducts::ctrCreateProducts($data);
                 }
 
                 ?>

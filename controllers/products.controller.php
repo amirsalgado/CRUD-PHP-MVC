@@ -12,10 +12,10 @@ class ControllerProducts
         return $response;
     }
 
-    public static function ctrSaveProducts($data): void
+    public static function ctrCreateProducts($data): void
     {
         $table = "products";
-        $response = ModelProducts::mdlSaveProducts($table, $data);
+        $response = ModelProducts::mdlCreateProducts($table, $data);
         if($response == "OK"){
             echo "El registro se guardó; con exito";
         }else{
